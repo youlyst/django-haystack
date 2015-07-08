@@ -84,7 +84,7 @@ class SearchField(object):
                 if self.must_exist and not hasattr(current_object, attr):
                     raise SearchFieldError("The model '%s' does not have a model_attr '%s'." % (repr(obj), attr))
                 
-                if must_exist:
+                if self.must_exist:
                     current_object = getattr(current_object, attr, None)
                 else:
                     try:
