@@ -78,6 +78,10 @@ class SearchField(object):
         elif self.model_attr is not None:
             # Check for `__` in the field for looking through the relation.
             attrs = self.model_attr.split('__')
+            
+            if not attrs[0] in obj._meta.get_all_field_names():
+                return getattr(obj, self.model_attr, None)
+
             current_object = obj
 
             for attr in attrs:
