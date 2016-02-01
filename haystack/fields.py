@@ -80,7 +80,10 @@ class SearchField(object):
             attrs = self.model_attr.split('__')
             
             if not attrs[0] in obj._meta.get_all_field_names():
-                return getattr(obj, self.model_attr, None)
+                prop = getattr(obj, self.model_attr, None)
+                if prop:
+                    return prop()
+                return None
 
             current_object = obj
 
