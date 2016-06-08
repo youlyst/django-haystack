@@ -352,7 +352,6 @@ class DateTimeField(SearchField):
                 return datetime_safe.datetime(int(data['year']), int(data['month']), int(data['day']), int(data['hour']), int(data['minute']), int(data['second']))
             else:
                 raise SearchFieldError("Datetime provided to '%s' field doesn't appear to be a valid datetime string: '%s'" % (self.instance_name, value))
-
         return value
 
 
