@@ -267,8 +267,10 @@ class SolrSearchBackend(BaseSearchBackend):
             # a center point & a radius off the user-provided box, which kinda
             # sucks. We'll avoid it for now, since Solr 4.x's release will be some
             # time yet.
-            # kwargs['fl'] += ' _dist_:geodist()'
-            pass
+            kwargs['fl'] += ' __dist__:geodist()'
+            kwargs['sfield'] = distance_point.get('field')
+            lon, lat = distance_point.get('point').get_coords()
+            kwargs['pt'] = '%s,%s' % (lat, lon)
 
         return kwargs
 
