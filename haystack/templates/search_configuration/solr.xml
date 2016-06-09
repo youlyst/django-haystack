@@ -130,7 +130,13 @@
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
       </analyzer>
     </fieldType>
-    <fieldType name="location_rpt"   class="solr.SpatialRecursivePrefixTreeFieldType" units="degrees" />
+
+    <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType"
+               distErrPct="0.025"
+               maxDistErr="0.000009"
+               units="degrees" >
+    </fieldType>
+            
   </types>
 
   <fields>
